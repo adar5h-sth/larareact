@@ -20,7 +20,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'address',
+        'city',
+        'country',
+        'zip_code',
+        'phone_number',
+        'profile_image',
+        'profile_completed'
     ];
 
     /**
@@ -44,5 +50,18 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class)->with('products')->latest();
+    }
+    public function image_path()
+    {
+        if ($this->profile_image) {
+            return asset('storage/images/users/' . $this->profile_image);
+        } else {
+            return 'https://cdn.pixabay.com/photo/2014/03/24/13/49/avatar-294480_1280.png';
+        };
     }
 }
