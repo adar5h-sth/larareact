@@ -20,7 +20,10 @@
             <div class="card shadow-lg p-4">
 
                 <div class="card-body">
-                    <h3 class="text-center mb-4">Admin Login</h3>
+                    <h3 class="text-center mb-4 border-bottom border-2 border-red pb-2">
+                        Admin Login
+                    </h3>
+
                     <form action="{{ route('admin.auth') }}" method="POST">
                         @csrf
                         <div class="form-floating mb-3">
