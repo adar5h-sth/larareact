@@ -52,7 +52,7 @@ class AdminController extends Controller
     public function auth(AuthAdminRequest $request)
     {
         if ($request->validated()) {
-            if (!auth()->guard('admin')->attempt([
+            if (auth()->guard('admin')->attempt([
                 'email' => $request->email,
                 'password' => $request->password
             ])) {
