@@ -16,13 +16,13 @@ class AdminController extends Controller
     public function index()
     {
         $todayOrders = Order::whereDay('created_at', Carbon::today())->get();  // Gets all orders created today.
-        $yesterdatOrders = Order::whereDay('created_at', Carbon::yesterday())->get(); // Gets orders from yesterday.
+        $yesterdayOrders = Order::whereDay('created_at', Carbon::yesterday())->get(); // Gets orders from yesterday.
         $monthOrders = Order::whereMonth('created_at', Carbon::now()->month)->get(); // Gets all orders made this month.
         $yearOrders = Order::whereYear('created_at', Carbon::now()->year)->get(); // Gets all orders made this year.
 
         return view('admin.index')->with([
             'todayOrders' => $todayOrders,
-            'yesterdatOrders' => $yesterdatOrders,
+            'yesterdayOrders' => $yesterdayOrders,
             'monthOrders' => $monthOrders,
             'yearOrders' => $yearOrders,
         ]);
@@ -43,8 +43,8 @@ class AdminController extends Controller
         if (!auth()->guard('admin')->check()) {
             return view('admin.login');
         }
-        return redirect()->route('admin.dashboard');
-    }   
+        return redirect()->route('admin.index');
+    }
 
     /**
      * Auth admin
