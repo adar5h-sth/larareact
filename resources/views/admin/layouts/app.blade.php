@@ -159,7 +159,6 @@
     </script>
     <script src="{{ asset('js/colors.js') }}"></script>
 
-    @include('admin.layouts.footer')
 </body>
 
 </html>
