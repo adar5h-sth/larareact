@@ -13,13 +13,11 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Summer note CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
-        integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
     <!-- Dashboard CSS -->
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -105,9 +103,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <!-- Summer note JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js"
-        integrity="sha512-6rE6Bx6fCBpRXG/FWpQmvguMWDLWMQjPycXMr35Zx/HRD9nwySZswkkLksgyQcvrpYMx0FELLJVBvWFtubZhDQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <!-- Sweet alert js -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @session('success')
@@ -157,8 +153,29 @@
             });
         }
     </script>
-    <script src="{{ asset('js/colors.js') }}"></script>
+    <script src="{{asset('js/colors.js')}}"></script>
+    <script>
+        function readUrl(input, image) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(image).classList.remove('d-none');
+                    document.getElementById(image).setAttribute('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
-</body>
+        function handleImageInputChanged(input, image) {
+            document.getElementById(input).addEventListener('change', function () {
+                readUrl(this, image);
+            });
+        }
+
+        handleImageInputChanged('thumbnail', 'thumbnail_preview');
+        handleImageInputChanged('first_image', 'first_image_preview');
+        handleImageInputChanged('second_image', 'second_image_preview');
+        handleImageInputChanged('third_image', 'third_image_preview');
+    </script>
 
 </html>
