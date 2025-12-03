@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\CouponController;
+use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\ProductController;
 
 Route::middleware('auth:sanctum')->group(function () {
