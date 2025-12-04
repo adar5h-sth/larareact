@@ -43,6 +43,27 @@
                         Products
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" aria-current="page"
+                        href="{{route('admin.orders.index')}}">
+                        <i class="fas fa-cart-shopping"></i>
+                        Orders
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" aria-current="page"
+                        href="{{route('admin.reviews.index')}}">
+                        <i class="fas fa-star"></i>
+                        Reviews
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" aria-current="page"
+                        href="{{route('admin.users.index')}}">
+                        <i class="fas fa-users"></i>
+                        Users
+                    </a>
+                </li>
             </ul>
             <hr class="my-3">
             <ul class="nav flex-column mb-auto">
